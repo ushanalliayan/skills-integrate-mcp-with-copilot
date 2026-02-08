@@ -1,3 +1,7 @@
+
+from activity_calendar import add_activity, view_activities
+
+
 """
 High School Management System API
 
@@ -130,3 +134,28 @@ def unregister_from_activity(activity_name: str, email: str):
     # Remove student
     activity["participants"].remove(email)
     return {"message": f"Unregistered {email} from {activity_name}"}
+
+
+def main():
+    while True:
+        print("\nMenu:")
+        print("1. Add Activity")
+        print("2. View Activities")
+        print("3. Exit")
+        choice = input("Choose an option: ")
+        
+        if choice == "1":
+            title = input("Activity title: ")
+            date = input("Activity date (YYYY-MM-DD): ")
+            desc = input("Description: ")
+            add_activity(title, date, desc)
+        elif choice == "2":
+            view_activities()
+        elif choice == "3":
+            break
+        else:
+            print("Invalid choice. Try again.")
+
+if __name__ == "__main__":
+    main()
+
